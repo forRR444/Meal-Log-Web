@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://meal-log-api-cdd7a22b0ec6.herokuapp.com/$1"
+    },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
