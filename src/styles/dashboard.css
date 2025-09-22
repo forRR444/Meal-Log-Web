@@ -1,0 +1,118 @@
+/* MealForm（ダッシュボード先頭のフォーム）— 横並び + 折返し */
+.dash__card > form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* 入力・セレクト共通（ログイン画面と同トーン） */
+.dash__card > form input,
+.dash__card > form select,
+.dash__controls input[type="date"] {
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: var(--radius-sm, 10px);
+  background: #fff;
+  font-size: 14px;
+  color: var(--text, #111);
+  box-sizing: border-box;
+  outline: none;
+}
+.dash__card > form input:focus,
+.dash__card > form select:focus,
+.dash__controls input[type="date"]:focus {
+  border-color: #c7d2fe;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* 幅配分 */
+.dash__card > form input[type="text"]:first-of-type {
+  /* 食事名 */
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+.dash__card > form select {
+  /* 種別 */
+  flex: 0 0 150px;
+  min-width: 140px;
+}
+.dash__card > form input[type="number"] {
+  /* g / kcal */
+  flex: 0 0 120px;
+  min-width: 110px;
+  text-align: right;
+}
+.dash__card > form input[type="text"]:last-of-type {
+  /* メモ */
+  flex: 2 1 260px;
+  min-width: 220px;
+}
+
+/* プライマリ（黒塗り）：「追加」「今日」など */
+.dash__btn,
+.dash__card button[type="submit"] {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--btn, #111);
+  border-radius: var(--radius-md, 12px); /* 丸すぎない程度 */
+  background: var(--btn, #111);
+  color: var(--btn-text, #fff);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.02s ease;
+}
+.dash__btn:hover,
+.dash__card button[type="submit"]:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.dash__btn:active,
+.dash__card button[type="submit"]:active {
+  transform: translateY(1px);
+}
+.dash__card button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ゴースト（編集/削除） */
+.dash__list button {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: var(--radius-md, 12px);
+  background: #fff;
+  color: var(--text, #111);
+  border: 1px solid var(--border, #e5e7eb);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.02s ease;
+}
+.dash__list button:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.dash__list button:active {
+  transform: translateY(1px);
+}
+
+/* 削除だけ赤アウトライン（最後のボタン想定） */
+.dash__list button:last-child {
+  border-color: var(--danger, #b00020);
+  color: var(--danger, #b00020);
+}
+.dash__list button:last-child:hover {
+  background: rgba(176, 0, 32, 0.05);
+  box-shadow: 0 2px 8px rgba(176, 0, 32, 0.15);
+}
+
+/* スマホ折返し最適化 */
+@media (max-width: 560px) {
+  .dash__card > form input[type="text"]:first-of-type,
+  .dash__card > form input[type="text"]:last-of-type {
+    flex-basis: 100%;
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,205 @@
+/* =======================
+   Auth 共通スタイル
+   （Login / Signup 兼用）
+   ======================= */
+
+:root {
+  --bg: #f5f7fa;
+  --card: #fff;
+  --text: #111;
+  --muted: #666;
+  --border: #e5e7eb;
+  --focus: rgba(59, 130, 246, 0.2);
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+
+  --btn: #111;
+  --btn-text: #fff;
+
+  --danger: #b00020;
+  --danger-bg: #fde8e8;
+  --danger-bd: #f7caca;
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+  --radius-pill: 9999px;
+}
+
+/* ページ全体 */
+.auth__page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  color: var(--text);
+}
+
+/* カード */
+.auth__card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+/* タイトル */
+.auth__title {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* ラベル */
+.auth__label {
+  display: block;
+  font-size: 14px;
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+/* 入力 */
+.auth__input {
+  width: 100%;
+  height: 44px;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  font-size: 16px;
+  color: var(--text);
+  outline: none;
+}
+.auth__input:focus {
+  border-color: #c7d2fe;
+  box-shadow: 0 0 0 3px var(--focus);
+}
+
+/* エラー */
+.auth__error {
+  margin: 8px 0 14px;
+  color: var(--danger);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-bd);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* 送信ボタン（黒塗り） */
+.auth__submit {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--btn);
+  color: var(--btn-text);
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.02s ease;
+}
+.auth__submit:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+.auth__submit:active {
+  transform: translateY(1px);
+}
+.auth__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* フッター & リンク */
+.auth__footer {
+  margin-top: 16px;
+  text-align: center;
+}
+.auth__link {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+/* =======================
+   Segmented Buttons（タブ風）
+   スクショの「白アウトライン / 黒塗り」再現
+   ======================= */
+
+/* 並びのコンテナ（任意。h1 の直下などに置く想定） */
+.auth__tabs {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* 共通 */
+.auth__tab {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  line-height: 1;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  text-decoration: none; /* <a>でも綺麗に */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.15s ease, transform 0.02s ease;
+}
+
+/* 白アウトライン（ログイン向け） */
+.auth__tab--ghost {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+/* 黒塗り（新規登録向け） */
+.auth__tab--solid {
+  background: var(--btn);
+  color: var(--btn-text);
+  border-color: var(--btn);
+}
+
+/* 状態 */
+.auth__tab:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+.auth__tab:active {
+  transform: translateY(1px);
+}
+.auth__tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus);
+}
+
+.auth__tab.is-active.auth__tab--ghost {
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.06);
+}
+.auth__tab.is-active.auth__tab--solid {
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.16);
+}
+
+/* =======================
+   小さなユーティリティ（任意）
+   ======================= */
+.auth__spacer-12 {
+  height: 12px;
+}
+.auth__spacer-16 {
+  height: 16px;
+}
